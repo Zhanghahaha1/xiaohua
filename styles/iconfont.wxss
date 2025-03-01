@@ -1,0 +1,27 @@
+@font-face {
+  font-family: 'iconfont';
+  src: url('data:font/woff2;charset=utf-8;base64,... 字体base64编码 ...');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-like:before {
+  content: "\e668";
+}
+
+.icon-share:before {
+  content: "\e669";
+}
+
+.icon-star:before {
+  content: "\e66a";
+}
+
+.icon-comment:before {
+  content: "\e66b";
+} 

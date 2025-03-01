@@ -1,0 +1,209 @@
+/* 引入主题配置 */
+@import "../../styles/theme.wxss";
+
+.container {
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+
+.category-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  padding: 20rpx 0;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);
+}
+
+.category-scroll {
+  white-space: nowrap;
+}
+
+.category-list {
+  display: inline-block;
+  padding: 0 20rpx;
+}
+
+.category-item {
+  display: inline-block;
+  padding: 12rpx 30rpx;
+  margin-right: 20rpx;
+  border-radius: 30rpx;
+  font-size: 28rpx;
+  color: #fff;
+  background: rgba(255,255,255,0.2);
+  transition: all 0.3s;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
+}
+
+.category-item.active {
+  background: var(--accent-color);
+  color: #333;
+  transform: scale(1.05);
+}
+
+.joke-list {
+  padding: 20rpx;
+}
+
+.joke-item {
+  margin-bottom: 30rpx;
+  padding: 25rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.08);
+  transform: translateY(0);
+  transition: all 0.3s;
+}
+
+.joke-item:active {
+  transform: translateY(2rpx);
+}
+
+.joke-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15rpx;
+}
+
+/* 为不同分类设置不同颜色 */
+.joke-category {
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.joke-category.cold {
+  background: var(--category-cold);
+  color: #fff;
+}
+
+.joke-category.hot {
+  background: var(--category-hot);
+  color: #fff;
+}
+
+.joke-category.love {
+  background: var(--category-love);
+  color: #fff;
+}
+
+.joke-category.funny {
+  background: var(--category-funny);
+  color: #333;
+}
+
+.joke-category.life {
+  background: var(--category-life);
+  color: #fff;
+}
+
+.joke-category.work {
+  background: var(--category-work);
+  color: #fff;
+}
+
+.joke-time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.joke-content {
+  font-size: 30rpx;
+  line-height: 1.6;
+  color: #333;
+  margin: 20rpx 0;
+}
+
+.joke-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.joke-stats {
+  display: flex;
+  gap: 20rpx;
+  color: #666;
+  font-size: 26rpx;
+}
+
+.joke-actions {
+  display: flex;
+  gap: 15rpx;
+}
+
+.action-btn {
+  padding: 0;
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 35rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.action-btn.like {
+  background: var(--primary-color);
+}
+
+.action-btn.share {
+  background: var(--secondary-color);
+}
+
+.action-btn.favorite {
+  background: var(--accent-color);
+}
+
+.action-btn .iconfont {
+  font-size: 36rpx;
+  color: #fff;
+}
+
+.empty-tip {
+  text-align: center;
+  padding: 100rpx 0;
+  color: #999;
+  font-size: 28rpx;
+}
+
+/* 添加加载动画 */
+.loading-container {
+  text-align: center;
+  padding: 30rpx;
+}
+
+.loading-dots {
+  display: inline-flex;
+  gap: 8rpx;
+}
+
+.dot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  background: var(--primary-color);
+  animation: bounce 0.5s infinite alternate;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.2s;
+  background: var(--secondary-color);
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.4s;
+  background: var(--accent-color);
+}
+
+@keyframes bounce {
+  to {
+    transform: translateY(-10rpx);
+  }
+} 
