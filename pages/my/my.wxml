@@ -1,0 +1,7 @@
+<view class="container">
+  <view class="user-info">
+    <image class="avatar" src="{{userInfo.avatarUrl || '/images/default-avatar.png'}}" />
+    <view class="nickname">{{userInfo.nickName || '未登录'}}</view>
+  </view>
+  <!-- 其他个人中心功能 -->
+</view> 

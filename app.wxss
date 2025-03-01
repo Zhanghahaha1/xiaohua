@@ -1,0 +1,26 @@
+@import "./styles/theme.wxss";
+@import "./styles/iconfont.wxss";
+
+page {
+  background: #f8f9fa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica,
+    Segoe UI, Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei',
+    sans-serif;
+}
+
+.container {
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.empty-tip {
+  text-align: center;
+  padding: 100rpx 0;
+  color: #999;
+}
+
+.empty-image {
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 20rpx;
+} 
