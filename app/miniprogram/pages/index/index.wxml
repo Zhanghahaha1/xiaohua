@@ -1,6 +1,7 @@
 <view class="container">
-  <view class="categories">
-    <scroll-view scroll-x="true" class="category-scroll">
+  <!-- 分类选项卡 -->
+  <scroll-view scroll-x="true" class="categories">
+    <view class="category-list">
       <view 
         wx:for="{{categories}}" 
         wx:key="*this"
@@ -10,9 +11,10 @@
       >
         {{item}}
       </view>
-    </scroll-view>
-  </view>
+    </view>
+  </scroll-view>
 
+  <!-- 笑话列表 -->
   <view class="jokes-list">
     <view 
       wx:for="{{jokes}}" 
@@ -31,6 +33,7 @@
     </view>
   </view>
 
+  <!-- 加载状态 -->
   <view wx:if="{{loading}}" class="loading">加载中...</view>
   <view wx:if="{{!hasMore && !loading}}" class="no-more">没有更多了</view>
 </view> 
