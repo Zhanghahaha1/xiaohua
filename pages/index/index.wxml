@@ -1,79 +1,39 @@
 <view class="container">
   <view class="category-bar">
-    <scroll-view scroll-x="true" class="category-scroll">
-      <view class="category-list">
-        <view class="category-item {{currentCategory === category ? 'active' : ''}}" 
-              wx:for="{{categories}}" 
-              wx:key="*this"
-              wx:for-item="category"
-              bindtap="onCategoryChange"
-              data-category="{{category}}">
-          {{category}}
-        </view>
+    <scroll-view class="category-scroll" scroll-x="true">
+      <view 
+        class="category-item {{currentCategory === item ? 'active' : ''}}" 
+        wx:for="{{categories}}" 
+        wx:key="*this"
+        data-category="{{item}}"
+        bindtap="onCategoryChange"
+      >
+        {{item}}
       </view>
     </scroll-view>
   </view>
 
   <view class="joke-list">
-    <view wx:if="{{jokes.length === 0 && !loading}}" class="empty-tip">
-      <image src="/images/empty.png" mode="aspectFit" class="empty-image"/>
-      <view>暂无笑话内容~</view>
-    </view>
-    
     <view class="joke-item" wx:for="{{jokes}}" wx:key="id">
-      <view class="joke-header">
-        <view class="joke-category {{item.category}}">
-          {{item.category}}
-        </view>
-        <view class="joke-time">{{item.createdAt}}</view>
-      </view>
-      
       <view class="joke-content">{{item.content}}</view>
-      
       <view class="joke-footer">
-        <view class="joke-stats">
-          <text class="stat-item">
-            <text class="iconfont icon-like"></text>
-            {{item.likes}}
-          </text>
-          <text class="stat-item">
-            <text class="iconfont icon-comment"></text>
-            {{item.comments}}
-          </text>
-          <text class="stat-item">
-            <text class="iconfont icon-share"></text>
-            {{item.shares}}
-          </text>
+        <view class="action-group">
+          <view class="action-item" bindtap="onLike" data-id="{{item.id}}">
+            <text class="action-icon">👍</text>
+            <text class="action-count">{{item.likes}}</text>
+          </view>
+          <view class="action-item" bindtap="onComment" data-id="{{item.id}}">
+            <text class="action-icon">💬</text>
+            <text class="action-count">{{item.comments}}</text>
+          </view>
+          <view class="action-item" bindtap="onShare" data-id="{{item.id}}">
+            <text class="action-icon">📤</text>
+            <text class="action-count">{{item.shares}}</text>
+          </view>
+          <view class="action-item" bindtap="onFavorite" data-id="{{item.id}}">
+            <text class="action-icon">⭐</text>
+          </view>
         </view>
-        
-        <view class="joke-actions">
-          <button class="action-btn like" 
-                  hover-class="button-hover"
-                  bindtap="onLike" 
-                  data-id="{{item.id}}">
-            <text class="iconfont icon-like"></text>
-          </button>
-          <button class="action-btn share" 
-                  hover-class="button-hover"
-                  bindtap="onShare" 
-                  data-id="{{item.id}}">
-            <text class="iconfont icon-share"></text>
-          </button>
-          <button class="action-btn favorite" 
-                  hover-class="button-hover"
-                  bindtap="onFavorite" 
-                  data-id="{{item.id}}">
-            <text class="iconfont icon-star"></text>
-          </button>
-        </view>
-      </view>
-    </view>
-    
-    <view class="loading-container" wx:if="{{loading}}">
-      <view class="loading-dots">
-        <view class="dot"></view>
-        <view class="dot"></view>
-        <view class="dot"></view>
       </view>
     </view>
   </view>

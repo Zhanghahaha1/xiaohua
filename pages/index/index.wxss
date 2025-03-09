@@ -4,23 +4,19 @@
 .container {
   background: #f8f9fa;
   min-height: 100vh;
+  padding-bottom: 40rpx;
 }
 
+/* 分类栏样式 */
 .category-bar {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background: #fff;
   padding: 20rpx 0;
-  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);
+  margin-bottom: 20rpx;
+  border-bottom: 1rpx solid #eee;
 }
 
 .category-scroll {
   white-space: nowrap;
-}
-
-.category-list {
-  display: inline-block;
   padding: 0 20rpx;
 }
 
@@ -30,34 +26,26 @@
   margin-right: 20rpx;
   border-radius: 30rpx;
   font-size: 28rpx;
-  color: #fff;
-  background: rgba(255,255,255,0.2);
-  transition: all 0.3s;
-  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
+  color: #666;
+  background: #f5f5f5;
 }
 
 .category-item.active {
-  background: var(--accent-color);
-  color: #333;
-  transform: scale(1.05);
+  background: #FF6B6B;
+  color: #fff;
 }
 
+/* 笑话卡片样式 */
 .joke-list {
-  padding: 20rpx;
+  padding: 0 20rpx;
 }
 
 .joke-item {
-  margin-bottom: 30rpx;
-  padding: 25rpx;
   background: #fff;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
   border-radius: 16rpx;
-  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.08);
-  transform: translateY(0);
-  transition: all 0.3s;
-}
-
-.joke-item:active {
-  transform: translateY(2rpx);
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.05);
 }
 
 .joke-header {
@@ -111,59 +99,37 @@
 }
 
 .joke-content {
-  font-size: 30rpx;
+  font-size: 32rpx;
   line-height: 1.6;
   color: #333;
-  margin: 20rpx 0;
+  margin-bottom: 20rpx;
 }
 
 .joke-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 20rpx;
   padding-top: 20rpx;
-  border-top: 1rpx solid #f0f0f0;
+  border-top: 1rpx solid #eee;
 }
 
-.joke-stats {
+.action-group {
   display: flex;
-  gap: 20rpx;
-  color: #666;
-  font-size: 26rpx;
+  justify-content: flex-start;
+  gap: 40rpx;
 }
 
-.joke-actions {
-  display: flex;
-  gap: 15rpx;
-}
-
-.action-btn {
-  padding: 0;
-  width: 70rpx;
-  height: 70rpx;
-  border-radius: 35rpx;
+.action-item {
   display: flex;
   align-items: center;
-  justify-content: center;
-  transition: all 0.3s;
+  gap: 8rpx;
+  padding: 8rpx 0;
 }
 
-.action-btn.like {
-  background: var(--primary-color);
-}
-
-.action-btn.share {
-  background: var(--secondary-color);
-}
-
-.action-btn.favorite {
-  background: var(--accent-color);
-}
-
-.action-btn .iconfont {
+.action-icon {
   font-size: 36rpx;
-  color: #fff;
+}
+
+.action-count {
+  font-size: 26rpx;
+  color: #999;
 }
 
 .empty-tip {

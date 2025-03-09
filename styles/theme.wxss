@@ -1,5 +1,6 @@
 /* 主题颜色配置 */
-page {
+:root {
+  /* 主要颜色 */
   --primary-color: #FF6B6B;      /* 主色调：活力红 */
   --secondary-color: #4ECDC4;    /* 次要色：清新蓝绿 */
   --accent-color: #FFE66D;       /* 强调色：明亮黄 */
@@ -8,10 +9,10 @@ page {
   --info-color: #A8E6CF;         /* 信息色：淡绿 */
   
   /* 分类标签颜色 */
-  --category-cold: #4ECDC4;      /* 冷笑话 */
+  --category-cold: #4A90E2;      /* 冷笑话 */
   --category-hot: #FF6B6B;       /* 热门笑话 */
-  --category-love: #FF8B94;      /* 爱情笑话 */
+  --category-love: #FF7AAE;      /* 爱情笑话 */
   --category-funny: #FFE66D;     /* 无厘头笑话 */
-  --category-life: #A8E6CF;      /* 生活笑话 */
-  --category-work: #95E1D3;      /* 职场笑话 */
+  --category-life: #50E3C2;      /* 生活笑话 */
+  --category-work: #9B59B6;      /* 职场笑话 */
 } 
