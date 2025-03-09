@@ -22,16 +22,9 @@
             <text class="action-icon">👍</text>
             <text class="action-count">{{item.likes}}</text>
           </view>
-          <view class="action-item" bindtap="onComment" data-id="{{item.id}}">
-            <text class="action-icon">💬</text>
-            <text class="action-count">{{item.comments}}</text>
-          </view>
           <view class="action-item" bindtap="onShare" data-id="{{item.id}}">
             <text class="action-icon">📤</text>
             <text class="action-count">{{item.shares}}</text>
-          </view>
-          <view class="action-item" bindtap="onFavorite" data-id="{{item.id}}">
-            <text class="action-icon">⭐</text>
           </view>
         </view>
       </view>
