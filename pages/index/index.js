@@ -2,14 +2,34 @@ Page({
   data: {
     categories: ['全部', '冷笑话', '热门笑话', '爱情笑话', '无厘头笑话', '生活笑话', '职场笑话'],
     currentCategory: '全部',
-    jokes: [],
-    loading: true,
+    jokes: [
+      {
+        id: 1,
+        content: '小明：爸爸，我考了100分！爸爸：真的吗？在哪个科目？小明：数学50分，语文50分！',
+        likes: 100,
+        shares: 30
+      },
+      {
+        id: 2,
+        content: '老师：小明，你为什么迟到？小明：因为看到前面有个牌子写着"前方学校，慢行"。',
+        likes: 88,
+        shares: 20
+      },
+      {
+        id: 3,
+        content: '医生：你要多运动。病人：我每天都在打麻将啊！医生：那不是运动。病人：那你没见过我打麻将时有多激动！',
+        likes: 120,
+        shares: 40
+      }
+    ],
+    loading: false,
     page: 1,
     hasMore: true
   },
 
   onLoad() {
-    this.loadJokes()
+    // 暂时不调用 loadJokes
+    // this.loadJokes()
   },
 
   loadJokes() {
@@ -83,19 +103,30 @@ Page({
   },
 
   onLike(e) {
-    const id = e.currentTarget.dataset.id
-    // 处理点赞逻辑
+    const id = e.currentTarget.dataset.id;
+    const jokes = this.data.jokes.map(joke => {
+      if (joke.id === id) {
+        return {
+          ...joke,
+          likes: joke.likes + 1
+        };
+      }
+      return joke;
+    });
+    
+    this.setData({ jokes });
+    
     wx.showToast({
       title: '点赞成功',
       icon: 'success'
-    })
+    });
   },
 
   onShare(e) {
-    const id = e.currentTarget.dataset.id
+    const id = e.currentTarget.dataset.id;
     wx.showShareMenu({
       withShareTicket: true,
       menus: ['shareAppMessage', 'shareTimeline']
-    })
+    });
   }
-}) 
+});
