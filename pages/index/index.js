@@ -2,65 +2,100 @@ Page({
   data: {
     categories: ['全部', '冷笑话', '热门笑话', '爱情笑话', '无厘头笑话', '生活笑话', '职场笑话'],
     currentCategory: '全部',
-    jokes: [
-      {
-        id: 1,
-        content: '小明：爸爸，我考了100分！爸爸：真的吗？在哪个科目？小明：数学50分，语文50分！',
-        likes: 100,
-        comments: 50,
-        shares: 30,
-        createdAt: '2024-03-20'
-      },
-      {
-        id: 2,
-        content: '老师：小明，你为什么迟到？小明：因为看到前面有个牌子写着"前方学校，慢行"。',
-        likes: 88,
-        comments: 45,
-        shares: 20,
-        createdAt: '2024-03-20'
-      },
-      {
-        id: 3,
-        content: '医生：你要多运动。病人：我每天都在打麻将啊！医生：那不是运动。病人：那你没见过我打麻将时有多激动！',
-        likes: 120,
-        comments: 60,
-        shares: 40,
-        createdAt: '2024-03-20'
-      }
-    ],
-    loading: false
+    jokes: [],
+    loading: true,
+    page: 1,
+    hasMore: true
   },
 
   onLoad() {
-    // 页面加载时数据已经在 data 中了
+    this.loadJokes()
+  },
+
+  loadJokes() {
+    if (!this.data.hasMore || this.data.loading) return
+    
+    this.setData({ loading: true })
+    
+    wx.request({
+      url: 'https://api.apiopen.top/getJoke',
+      data: {
+        page: this.data.page,
+        count: 10,
+        type: 'text'
+      },
+      success: (res) => {
+        if (res.data.code === 200) {
+          const newJokes = res.data.result.map(item => ({
+            id: item.sid,
+            content: item.text,
+            likes: item.laugh || 0,
+            shares: item.forward || 0,
+            createdAt: item.time
+          }))
+
+          this.setData({
+            jokes: [...this.data.jokes, ...newJokes],
+            page: this.data.page + 1,
+            hasMore: newJokes.length === 10
+          })
+        }
+      },
+      fail: (err) => {
+        wx.showToast({
+          title: '加载失败',
+          icon: 'none'
+        })
+      },
+      complete: () => {
+        this.setData({ loading: false })
+      }
+    })
+  },
+
+  onPullDownRefresh() {
+    this.setData({
+      jokes: [],
+      page: 1,
+      hasMore: true
+    }, () => {
+      this.loadJokes()
+      wx.stopPullDownRefresh()
+    })
+  },
+
+  onReachBottom() {
+    if (this.data.hasMore) {
+      this.loadJokes()
+    }
   },
 
   onCategoryChange(e) {
-    const category = e.currentTarget.dataset.category;
+    const category = e.currentTarget.dataset.category
     this.setData({
-      currentCategory: category
-    });
-    // 这里可以根据分类加载不同的笑话
+      currentCategory: category,
+      jokes: [],
+      page: 1,
+      hasMore: true
+    }, () => {
+      this.loadJokes()
+    })
   },
 
   onLike(e) {
-    const id = e.currentTarget.dataset.id;
+    const id = e.currentTarget.dataset.id
     // 处理点赞逻辑
-    console.log('点赞', id);
-  },
-
-  onComment(e) {
-    const id = e.currentTarget.dataset.id;
-    console.log('评论', id);
+    wx.showToast({
+      title: '点赞成功',
+      icon: 'success'
+    })
   },
 
   onShare(e) {
-    const id = e.currentTarget.dataset.id;
-    console.log('分享', id);
-  },
-
-  onFavorite(e) {
-    const id = e.currentTarget.dataset.id;
-    console.log('收藏', id);
+    const id = e.currentTarget.dataset.id
+    wx.showShareMenu({
+      withShareTicket: true,
+      menus: ['shareAppMessage', 'shareTimeline']
+    })
   }
-}); 
+}) 
