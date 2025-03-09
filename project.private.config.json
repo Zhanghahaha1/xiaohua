@@ -3,5 +3,6 @@
   "projectname": "joke-mini",
   "setting": {
     "compileHotReLoad": true
-  }
+  },
+  "libVersion": "3.7.9"
 }

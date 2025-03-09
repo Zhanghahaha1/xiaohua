@@ -3,9 +3,10 @@ cloud.init()
 
 exports.main = async (event, context) => {
   const { category = '全部', page = 1 } = event
+  console.log('云函数收到请求：', event)  // 添加日志
   
   try {
-    // 模拟API调用，后续替换为 DeepSeek API
+    // 返回测试数据
     const jokes = [
       {
         id: 1,
@@ -23,6 +24,8 @@ exports.main = async (event, context) => {
       }
     ]
     
+    console.log('云函数返回数据：', jokes)  // 添加日志
+    
     return {
       code: 0,
       data: jokes,
@@ -30,10 +33,11 @@ exports.main = async (event, context) => {
     }
 
   } catch (error) {
+    console.error('云函数错误：', error)  // 添加日志
     return {
       code: -1,
       data: null,
       message: error.message
     }
   }
-} 
+}

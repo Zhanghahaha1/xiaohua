@@ -1,0 +1,36 @@
+<view class="container">
+  <view class="categories">
+    <scroll-view scroll-x="true" class="category-scroll">
+      <view 
+        wx:for="{{categories}}" 
+        wx:key="*this"
+        class="category-item {{currentCategory === item ? 'active' : ''}}"
+        bindtap="onCategoryChange"
+        data-category="{{item}}"
+      >
+        {{item}}
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="jokes-list">
+    <view 
+      wx:for="{{jokes}}" 
+      wx:key="id" 
+      class="joke-item"
+    >
+      <view class="joke-content">{{item.content}}</view>
+      <view class="joke-actions">
+        <view class="action">
+          👍 {{item.likes}}
+        </view>
+        <view class="action">
+          📤 {{item.shares}}
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{loading}}" class="loading">加载中...</view>
+  <view wx:if="{{!hasMore && !loading}}" class="no-more">没有更多了</view>
+</view> 

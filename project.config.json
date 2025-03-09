@@ -1,5 +1,8 @@
 {
   "description": "项目配置文件",
+  "miniprogramRoot": "app/miniprogram/",
+  "cloudfunctionRoot": "cloudfunctions/",
+  "cloud": true,
   "packOptions": {
     "ignore": [],
     "include": []
@@ -41,14 +44,11 @@
   "compileType": "miniprogram",
   "libVersion": "2.19.4",
   "appid": "wx9c5fd64ab35fb358",
-  "projectname": "joke-mini",
+  "projectname": "jokes",
   "condition": {},
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2
   },
-  "miniprogramRoot": "miniprogram/",
-  "cloudfunctionRoot": "cloudfunctions/",
-  "cloud": true,
   "srcMiniprogramRoot": "miniprogram/"
 }
