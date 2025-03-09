@@ -2,7 +2,14 @@ Page({
   data: {
     categories: ['全部', '冷笑话', '热门笑话', '爱情笑话', '无厘头笑话', '生活笑话', '职场笑话'],
     currentCategory: '全部',
-    jokes: [],
+    jokes: [
+      {
+        id: 1,
+        content: '小明：爸爸，我考了100分！爸爸：真的吗？在哪个科目？小明：数学50分，语文50分！',
+        likes: 100,
+        shares: 30
+      }
+    ],
     loading: true,
     page: 1,
     hasMore: true
